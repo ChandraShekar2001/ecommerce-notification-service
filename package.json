@@ -1,0 +1,62 @@
+{
+  "name": "ecommerce-notification-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "pm2 start ./build/src/app.js -i 5 --attach --watch | pino-pretty -c",
+    "stop": "pm2 stop all",
+    "dev": "nodemon -r tsconfig-paths/register src/app.ts | pino-pretty -c",
+    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json && ts-node tools/copyAssets.ts",
+    "test": "jest --coverage=true -w=1 --forceExit --detectOpenHandles --watchAll=false",
+    "lint:check": "eslint 'src/**/*.ts'",
+    "lint:fix": "eslint 'src/**/*.ts' --fix",
+    "prettier:check": "prettier --check 'src/**/*.{ts, json}'",
+    "prettier:fix": "prettier --write 'src/**/*.{ts, json}'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@jest/types": "^29.6.3",
+    "@types/amqplib": "^0.10.5",
+    "@types/email-templates": "^10.0.4",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/nodemailer": "^6.4.14",
+    "@types/shelljs": "^0.8.15",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.5",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.8",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "dependencies": {
+    "@chandrashekar2001/ecommerce-shared": "npm:@chandrashekar2001/ecommerce-shared@^1.0.2",
+    "@elastic/elasticsearch": "^8.13.1",
+    "@types/glob": "^8.1.0",
+    "amqplib": "^0.10.4",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "email-templates": "^11.1.1",
+    "express": "^4.19.2",
+    "express-async-errors": "^3.1.1",
+    "http-status-codes": "^2.3.0",
+    "nodemailer": "^6.9.13",
+    "pino-pretty": "^11.0.0",
+    "shelljs": "^0.8.5",
+    "typescript": "^5.4.5",
+    "typescript-transform-paths": "^3.4.7",
+    "winston": "^3.13.0"
+  },
+  "overrides": {
+    "minimatch": "5.1.2",
+    "glob": "8.1.0"
+  }
+}
