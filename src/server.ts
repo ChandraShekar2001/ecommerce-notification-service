@@ -9,7 +9,7 @@ import { checkConnection } from '@notifications/elasticsearch';
 import { createConnection } from '@notifications/queues/connection';
 import { Channel } from 'amqplib';
 import { consumeAuthEmailMessages, consumeOrderEmailMessages } from '@notifications/queues/email.consumer';
-const SERVER_PORT = 4002;
+const SERVER_PORT = 4001;
 const log: Logger = winstonLogger(`${config.ELASTIC_SEARCH_URL}`, "notificationServer", 'debug')
 
 export function start(app: Application): void {
